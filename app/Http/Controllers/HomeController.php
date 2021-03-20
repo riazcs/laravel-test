@@ -37,8 +37,11 @@ class HomeController extends Controller
         DB::table('users')->where('id', auth()->user()->id)->update(['client_id'=>$request->client_id, 'lincense_key'=> $request->lincense_key,'lincense_for'=> $request->lincense_for]);
         return view('activeLicensePage');
     }
-    public function active_key(){
-        DB::table('users')->where('id', auth()->user()->id)->update(['lincense_key' => 10]);
+    public function active_key(Request $request){
+        $license_key = User::find(auth()->user()->id)->license_key;
+        if($request->license_key == $license_key){
+            DB::table('users')->where('id', auth()->user()->id)->update(['lincense_key' => 10]); // suppose 10 active license key status code
+        }
         return ('License Key Successfully');
     }
 }

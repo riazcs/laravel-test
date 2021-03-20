@@ -27,12 +27,12 @@
                             <form method="POST" action="{{ route('active-key') }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="lincense_key" class="col-md-4 col-form-label text-md-right">{{ __('License Key') }}</label>
+                                    <label for="license_key" class="col-md-4 col-form-label text-md-right">{{ __('License Key') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="lincense_key" type="text" class="form-control @error('lincense_key') is-invalid @enderror" name="lincense_key" value="{{ old('lincense_key') }}" required>
+                                        <input id="license_key" type="text" class="form-control @error('license_key') is-invalid @enderror" name="license_key" value="{{ old('license_key') }}" required>
 
-                                        @error('lincense_key')
+                                        @error('license_key')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
