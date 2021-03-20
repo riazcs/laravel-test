@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Support\Facades\Blade;
-
+use Session;
 class HomeController extends Controller
 {
     /**
@@ -42,6 +42,7 @@ class HomeController extends Controller
         if($request->license_key == $license_key){
             DB::table('users')->where('id', auth()->user()->id)->update(['lincense_key' => 10]); // suppose 10 active license key status code
         }
+        Session::flash('message', "License Key Activated Successfully");
         return redirect('home');
     }
 }
