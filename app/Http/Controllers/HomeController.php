@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
+use Illuminate\Support\Facades\Blade;
 
 class HomeController extends Controller
 {
@@ -24,5 +28,17 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function create_key(Request $request){
+        DB::table('users')->where('id', auth()->user()->id)->update(['client_id'=>$request->client_id, 'lincense_key'=> $request->lincense_key,'lincense_for'=> $request->lincense_for]);
+        return view('userinfo');
+    }
+    public function update_key(Request $request){
+        DB::table('users')->where('id', auth()->user()->id)->update(['client_id'=>$request->client_id, 'lincense_key'=> $request->lincense_key,'lincense_for'=> $request->lincense_for]);
+        return view('activeLicensePage');
+    }
+    public function active_key(){
+        DB::table('users')->where('id', auth()->user()->id)->update(['lincense_key' => 10]);
+        return ('License Key Successfully');
     }
 }

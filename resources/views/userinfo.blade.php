@@ -14,7 +14,6 @@
                         </div>
                     @endif
 
-                    <!-- {{ __('You are logged in!') }} -->
 
                     @section('content')
                     <div class="container" >
@@ -22,9 +21,40 @@
                     <div class="col-md-8" >
                     <div class="card" style="background-color: #B0C249;">
                         <div class="card-header text-center">{{ __('Create License') }}</div>
-
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('create-key') }}">
+                        <table class="table table-bordered bg-white w-75 mt-3" style="margin-left: 90px;">
+                            <tbody>
+                            <tr>
+                                <td>First Name</td>
+                                <td> {{ Auth::user()->fname }}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td> {{ Auth::user()->lname }}</td>
+                            </tr>
+                            <tr>
+                                <td>Name of Organization</td>
+                                <td> {{ Auth::user()->organization_name }}</td>
+                            </tr>
+                            <tr>
+                                <td >Street</td>
+                                <td> {{ Auth::user()->street }}</td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td> {{ Auth::user()->city }}</td>
+                            </tr>
+                            <tr>
+                                <td >Phone</td>
+                                <td> {{ Auth::user()->phone }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td> {{ Auth::user()->email }}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <div class="card-body">
+                            <form method="POST" action="{{ route('update-key') }}">
                                 @csrf
 
                                 <div class="form-group row">

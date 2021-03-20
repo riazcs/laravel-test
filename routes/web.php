@@ -24,3 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/create-key',[App\Http\Controllers\HomeController::class, 'create_key'])->name('create-key');
+Route::post('/update-key',[App\Http\Controllers\HomeController::class, 'update_key'])->name('update-key');
+Route::post('/active-key',[App\Http\Controllers\HomeController::class, 'active_key'])->name('active-key');
